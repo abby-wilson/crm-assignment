@@ -26,7 +26,7 @@ class Contact
   end
 
   def self.all
-     p @@contacts
+      @@contacts
   end
 
 
@@ -77,12 +77,14 @@ class Contact
         return current_contact
       end
     end
+
+    return nil
   end
 
 
   # This method should delete all of the contacts
   def self.delete_all
-    Contact.clear
+    @@contacts.clear
   end
 
   def full_name
@@ -91,19 +93,28 @@ class Contact
 
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
-  def delete(contact)
-    Contact.delete_if(contact)
+  def delete
+    @@contacts.delete(self)
   end
 
   # Feel free to add other methods here, if you need them.
 
-end
 
-abby = Contact.create('Abby', 'Wilson', 'abbywilson@gmail.com', 'Me')
-joe = Contact.create('Joe', 'Bloggs', 'joebloggs@gmail.com', 'Work')
-jane = Contact.create('Jane', 'Doe', 'janedoe@gmail.com', 'School')
+# abby = Contact.create('Abby', 'Wilson', 'abbywilson@gmail.com', 'Me')
+# joe = Contact.create('Joe', 'Bloggs', 'joebloggs@gmail.com', 'Work')
+# jane = Contact.create('Jane', 'Doe', 'janedoe@gmail.com', 'School')
+# max = Contact.create('Max', 'Mad', 'madmax@gmail.com', 'Work')
+
 # p Contact.find(id = 2)
 # p abby.update("first_name", "Abigail")
-p Contact.find_by('first_name', 'Joe')
+# p Contact.find_by('first_name', 'Joe')
 # Contact.delete
 # p abby
+# @contact.delete(abby)
+# p abby
+# Contact.delete_all
+# p Contact.all
+# abby.delete
+p @@contacts
+
+end
