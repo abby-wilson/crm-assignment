@@ -84,11 +84,20 @@ class CRM
 
   def delete_contact
 
+    print  'Enter the id of the contact you want to delete: '
+    id = gets_to_i
+
+    contact = Contact.find(id)
+    contact.delete
+
   end
 
   def display_all_contacts
 
+    print "Displaying all contacts: "
+    print Contact.all.inspect
   end
+
 
   def search_by_attribute
     print 'How would you like to search by? '
