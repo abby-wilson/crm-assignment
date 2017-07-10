@@ -50,7 +50,12 @@ class CRM
     print 'Enter a Note: '
     note = gets.chomp
 
-    Contact.create(first_name, last_name, email, note)
+    contact = Contact.create(
+    first_name: first_name,
+    last_name:  last_name,
+    email:      email,
+    note:       note
+)
   end
 
   def modify_existing_contact
@@ -61,7 +66,7 @@ class CRM
     current_value = gets.chomp
 
     contact_to_update = Contact.find_by(search_by_attribute, current_value)
-    # puts contact_to_update
+    puts contact_to_update
 
     print 'Which attribute would you like to change?: '
     attribute_to_modify = gets.chomp
@@ -86,10 +91,21 @@ class CRM
   end
 
   def search_by_attribute
+    print 'How would you like to search by? '
+    search_by_attribute = gets.chomp
 
+    print 'What is the value for the contact'
+    current_value = gets.chomp
+
+    contact_to_match = Contact.find_by(search_by_attribute, current_value)
+    puts contact_to_match
   end
 
 
+end
+
+at_exit do
+  ActiveRecord::Base.connection.close
 end
 
 a_crm_app = CRM.new
