@@ -85,7 +85,7 @@ class CRM
   def delete_contact
 
     print  'Enter the id of the contact you want to delete: '
-    id = gets_to_i
+    id = gets.to_i
 
     contact = Contact.find(id)
     contact.delete
@@ -103,10 +103,11 @@ class CRM
     print 'How would you like to search by? '
     search_by_attribute = gets.chomp
 
-    print 'What is the value for the contact'
+    print 'What is the value for the contact? '
     current_value = gets.chomp
 
     contact_to_match = Contact.find_by(search_by_attribute, current_value)
+
     puts contact_to_match
   end
 
